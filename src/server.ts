@@ -24,7 +24,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
                 .send(`Url of image is required`);
      }
   
-     (async () => {
+    (async () => {
      const localurlPath= await filterImageFromURL(image_url).then((localurl)=>
       {
          return localurl;
@@ -32,30 +32,26 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       {
         return error; 
       })
-      res.sendFile(localurlPath);
-     // res.sendStatus(200).send(localurl);
-       }  ) //res.sendFile(localurl.);
- 
-       ();
-    //res.sendFile(localurl);
+      ;
+      res.sendFile(localurlPath, function (err) {
+        if (err) {
+         
+        } else {
+       
+            deleteLocalFiles([localurlPath])
+        }
+    });
    
-    // else
-    // filterImageFromURL(image_url).then((localpath)=>{
-      //return res.sendFile(localpath);
-     // return res.status(200)
-     // .send(`Url of image is required,${image_url}`);
+   
+    
+       }  ) 
+
+    ();
+
+   
      });
     
     
-   // let localUrl= filterImageFromURL(url).then(url).catch();
-    // filterImageFromURL(url).then((localurl)=>
-    // {
-     
-    // }).catch((error)=>{}).finally(()=>
-    // {}
-   //  );
-      // return res.sendFile(localurl.then);
-  // });
   // endpoint to filter an image from a public url.
   // IT SHOULD
   //    1
