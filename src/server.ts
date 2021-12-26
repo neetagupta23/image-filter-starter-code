@@ -46,7 +46,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
     ();
 
-  
+    res.status(200);
      });
      
   // Root Endpoint
