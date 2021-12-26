@@ -15,7 +15,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
   // @TODO1 IMPLEMENT A RESTFUL ENDPOINT
   // GET /filteredimage?image_url={{URL}}
-  app.get("/filteredimage",(req , res ) =>
+  app.get("/filteredimage",(req:express.Request, res:express.Response) =>
    {
      let {image_url}= req.query;
     
@@ -25,10 +25,10 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
      }
   
     (async () => {
-     const localurlPath= await filterImageFromURL(image_url).then((localurl)=>
+     const localurlPath: string= await filterImageFromURL(image_url).then((localurl:string)=>
       {
          return localurl;
-      }).catch((error)=>
+      }).catch((error : string)=>
       {
         return error; 
       })
